@@ -1,16 +1,5 @@
-.next
-node_modules
-README.md
 .git
 .gitignore
+README.md
 .env*
-.vscode
-.idea
-*.log
-*.md
-*.txt
-test
-tests
-__tests__
-coverage
 
