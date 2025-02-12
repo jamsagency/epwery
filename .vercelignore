@@ -4,4 +4,13 @@ README.md
 .git
 .gitignore
 .env*
+.vscode
+.idea
+*.log
+*.md
+*.txt
+test
+tests
+__tests__
+coverage
 
