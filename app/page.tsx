@@ -574,8 +574,8 @@ export default function Home() {
                   <Image
                     src="/message-1.svg"
                     alt="Message 1"
-                    width={500}
-                    height={88}
+                    width={350}
+                    height={85}
                     className={`absolute top-0 transition-opacity duration-500 ${
                       visibleMessages.includes(1) ? "opacity-100" : "opacity-0"
                     }`}
@@ -583,27 +583,27 @@ export default function Home() {
                   <Image
                     src="/message-2.svg"
                     alt="Message 2"
-                    width={500}
-                    height={88}
-                    className={`absolute top-[120px] transition-opacity duration-500 ${
+                    width={350}
+                    height={85}
+                    className={`absolute top-[90px] right-0 transition-opacity duration-500 ${
                       visibleMessages.includes(2) ? "opacity-100" : "opacity-0"
                     }`}
                   />
                   <Image
                     src="/message-3.svg"
                     alt="Message 3"
-                    width={500}
-                    height={88}
-                    className={`absolute top-[240px] transition-opacity duration-500 ${
+                    width={350}
+                    height={85}
+                    className={`absolute top-[260px] transition-opacity duration-500 ${
                       visibleMessages.includes(3) ? "opacity-100" : "opacity-0"
                     }`}
                   />
                   <Image
                     src="/message-4.svg"
                     alt="Message 4"
-                    width={500}
-                    height={88}
-                    className={`absolute top-[360px] transition-opacity duration-500 ${
+                    width={350}
+                    height={85}
+                    className={`absolute top-[370px] right-0 transition-opacity duration-500 ${
                       visibleMessages.includes(4) ? "opacity-100" : "opacity-0"
                     }`}
                   />
