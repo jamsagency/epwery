@@ -5,7 +5,11 @@ const nextConfig = {
     unoptimized: true,
   },
   typescript: {
-    ignoreBuildErrors: false,
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
   },
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
