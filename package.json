@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
     "build": "NODE_OPTIONS='--max_old_space_size=4096' next build --debug",
-    "postinstall": "rm -rf .next/cache"
+    "postinstall": "rm -rf .next/cache",
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
