@@ -19,8 +19,9 @@ const nextConfig = {
   },
   experimental: {
     webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
+    // Remove the following two lines:
+    // parallelServerBuildTraces: true,
+    // parallelServerCompiles: true,
   },
 }
 
