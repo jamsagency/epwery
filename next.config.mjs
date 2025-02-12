@@ -12,6 +12,7 @@ const nextConfig = {
     pagesBufferLength: 2,
   },
   webpack: (config, { isServer, dev }) => {
+    // Disable minimization for easier debugging
     config.optimization.minimize = false;
     config.optimization.minimizer = [];
     
@@ -42,9 +43,10 @@ const nextConfig = {
         },
         lib: {
           test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-            return `npm.${packageName.replace('@', '')}`;
+          name(module, chunks, cacheGroupKey) {
+            const moduleFileName = module.identifier().split('/').reduceRight(item => item);
+            const allChunksNames = chunks.map((item) => item.name).join('~');
+            return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
           },
           chunks: 'all',
           priority: 1,

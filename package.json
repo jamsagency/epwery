@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build": "NODE_OPTIONS='--max_old_space_size=4096' next build"
+    "build": "NODE_OPTIONS='--max_old_space_size=4096' next build --debug"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
