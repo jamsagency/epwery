@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function generateFavicons() {
+  console.log('Generating favicons...');
   try {
     // Read the source image from public folder
     const sourceImage = path.join(__dirname, '..', 'public', 'epwery-favicon-gradient.png');
