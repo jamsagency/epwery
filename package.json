@@ -8,8 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-favicon": "node scripts/generate-favicon.mjs",
-    "vercel-build": "next build"
+    "generate-favicon": "node scripts/generate-favicon.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
