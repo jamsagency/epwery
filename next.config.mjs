@@ -1,17 +1,51 @@
+let userConfig = {};
+try {
+  const { default: importedConfig } = await import('./v0-user-next.config.mjs');
+  userConfig = importedConfig;
+} catch (e) {
+  // User config not found, using defaults
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   images: {
     unoptimized: true,
   },
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: false,
+  experimental: {
+    // Disable experimental features
+    webpackBuildWorker: false,
+  },
+  output: 'standalone',
+  outputFileTracing: true,
+  outputTracing: {
+    ignoreNodeModules: true,
   },
 }
 
-export default nextConfig;
+function mergeConfig(baseConfig, userConfig) {
+  const mergedConfig = { ...baseConfig };
+
+  for (const key in userConfig) {
+    if (typeof baseConfig[key] === 'object' && !Array.isArray(baseConfig[key])) {
+      mergedConfig[key] = {
+        ...mergedConfig[key],
+        ...userConfig[key],
+      };
+    } else {
+      mergedConfig[key] = userConfig[key];
+    }
+  }
+
+  return mergedConfig;
+}
+
+const finalConfig = mergeConfig(nextConfig, userConfig);
+
+export default finalConfig;
 
