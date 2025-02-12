@@ -18,13 +18,9 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    // Disable experimental features
-    webpackBuildWorker: false,
-  },
-  output: 'standalone',
-  outputFileTracing: true,
-  outputTracing: {
-    ignoreNodeModules: true,
+    webpackBuildWorker: true,
+    parallelServerBuildTraces: true,
+    parallelServerCompiles: true,
   },
 }
 
