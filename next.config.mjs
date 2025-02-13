@@ -1,10 +1,47 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    domains: ['hebbkx1anhila5yf.public.blob.vercel-storage.com', 'media.licdn.com'],
-    unoptimized: true
-  }
+let userConfig = {};
+try {
+  const { default: importedConfig } = await import('./v0-user-next.config.mjs');
+  userConfig = importedConfig;
+} catch (e) {
+  // User config not found, using defaults
 }
 
-export default nextConfig
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    unoptimized: true,
+  },
+  experimental: {
+    webpackBuildWorker: true,
+    parallelServerBuildTraces: true,
+    parallelServerCompiles: true,
+  },
+}
+
+function mergeConfig(baseConfig, userConfig) {
+  const mergedConfig = { ...baseConfig };
+
+  for (const key in userConfig) {
+    if (typeof baseConfig[key] === 'object' && !Array.isArray(baseConfig[key])) {
+      mergedConfig[key] = {
+        ...mergedConfig[key],
+        ...userConfig[key],
+      };
+    } else {
+      mergedConfig[key] = userConfig[key];
+    }
+  }
+
+  return mergedConfig;
+}
+
+const finalConfig = mergeConfig(nextConfig, userConfig);
+
+export default finalConfig;
 
